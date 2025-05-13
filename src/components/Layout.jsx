@@ -8,7 +8,7 @@ function Layout() {
             <nav className="main-nav">
                 <NavLink to="/" className="main-nav-logo">
                     <img src={ArgentBankLogo} alt="Argent Bank Logo" className="main-nav-logo-image"/>
-                    <h1 class="sr-only">Argent Bank</h1>
+                    <h1 className="sr-only">Argent Bank</h1>
                 </NavLink>
                 <div>
                      <NavLink to="/sign-in" className="main-nav-item">
@@ -16,7 +16,6 @@ function Layout() {
                     Sign In
                     </NavLink>
                 </div>
-               
 			</nav>
 
 			<main>
@@ -24,7 +23,7 @@ function Layout() {
 			</main>
 
 			<footer className="footer">
-				<p class="footer-text">Copyright 2020 Argent Bank</p>
+				<p className="footer-text">Copyright 2020 Argent Bank</p>
 			</footer>
 		</>
 	);
