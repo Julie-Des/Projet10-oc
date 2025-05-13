@@ -1,5 +1,11 @@
+import Header from "../components/Header";
+
 function User() {
-	return <p>Coucou</p>;
+	return (
+		<div className="main bg-dark">
+			<Header />
+		</div>
+	)
 }
 
 export default User;
