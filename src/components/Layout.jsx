@@ -18,7 +18,7 @@ function Layout() {
                 </div>
 			</nav>
 
-			<main>
+			<main className="main bg-dark">
 				<Outlet />
 			</main>
 

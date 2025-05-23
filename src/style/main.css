@@ -13,8 +13,15 @@ body {
   min-height: 100vh;
 }
 
+#root{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .main {
   flex: 1;
+  overflow: hidden;
 }
 
 .bg-dark {
@@ -130,6 +137,7 @@ body {
 .features {
   display: flex;
   flex-direction: column;
+  background-color: #ffff;
 }
 
 @media (min-width: 920px) {
@@ -179,7 +187,7 @@ body {
 }
 
 .sign-in-icon {
-  font-size: 5rem;
+  font-size: 1rem;
 }
 
 .input-remember {
