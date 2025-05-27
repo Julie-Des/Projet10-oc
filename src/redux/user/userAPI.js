@@ -1,5 +1,3 @@
-// src/redux/user/userAPI.js
-
 // Récupération du profil utilisateur
 export async function fetchUserProfile(token) {
   const response = await fetch('http://localhost:3001/api/v1/user/profile', {
@@ -19,7 +17,7 @@ export async function fetchUserProfile(token) {
 }
 
 // Mise à jour du nom d'utilisateur
-export async function updateUsernameAPI(token, newUsername) {
+export async function updateUserNameAPI(token, newUsername) {
   const response = await fetch('http://localhost:3001/api/v1/user/profile', {
     method: 'PUT',
     headers: {

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchUserProfile } from './userAPI'; // fonction API
+import { fetchUserProfile } from './userAPI';
+import { updateUserNameAPI } from './userAPI';
 
 // THUNK : pour aller chercher les infos utilisateur
 export const getUserProfile = createAsyncThunk(
@@ -12,6 +13,20 @@ export const getUserProfile = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
+);
+
+
+// THUNK : pour mettre à jour le nom d'utilisateur
+export const updateUserName = createAsyncThunk(
+    'user/updateUserName',
+    async ( { token, newUserName }, thunkAPI) => {
+        try {
+            const response = await updateUserNameAPI(token, newUserName);
+            return response;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
 );
 
 const userSlice = createSlice({
@@ -35,9 +50,23 @@ const userSlice = createSlice({
       })
       .addCase(getUserProfile.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.userInfo = action.payload.body;
+        state.userInfo = action.payload;
       })
       .addCase(getUserProfile.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      })
+
+      // --- UPDATE USERNAME ---
+      .addCase(updateUserName.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(updateUserName.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.userInfo.userName = action.payload.userName;
+      })
+      .addCase(updateUserName.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
       });
