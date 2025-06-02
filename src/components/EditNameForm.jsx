@@ -19,25 +19,26 @@ function EditNameForm({ onCancel }) {
 
   return (
     <form className="edit-form" onSubmit={handleSubmit}>
-      <div className="input-wrapper">
-        <label htmlFor="userName">User name</label>
+      <h2>Edit User Info</h2>
+      <div className="input-form">
+        <label htmlFor="userName">User name:</label>
         <input
           id="userName"
           value={newUserName}
           onChange={(e) => setNewUserName(e.target.value)}
         />
       </div>
-      <div className="input-wrapper">
-        <label>First name</label>
+      <div className="input-form">
+        <label>First name:</label>
         <input value={userInfo.firstName} disabled />
       </div>
-      <div className="input-wrapper">
-        <label>Last name</label>
+      <div className="input-form">
+        <label>Last name:</label>
         <input value={userInfo.lastName} disabled />
       </div>
       <div className="form-buttons">
-        <button type="submit">Save</button>
-        <button type="button" onClick={onCancel}>
+        <button type="submit" className="form-button">Save</button>
+        <button type="button" onClick={onCancel} className="form-button">
           Cancel
         </button>
       </div>

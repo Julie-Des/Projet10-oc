@@ -279,7 +279,6 @@ body {
 .header {
   color: #fff;
   margin-bottom: 2rem;
-
 }
 
 .header h2 {
@@ -299,6 +298,53 @@ body {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-form label {
+  font-weight: bold;
+}
+
+.input-form input {
+  padding: 7px;
+  width: 150px;
+  border-radius: 4px;
+  border-color: #12002b;
+  border: 1px;
+}
+
+.input-form input:disabled {
+  background-color:#e7e7e7;
+  color: #a7a7a7;
+}
+
+.form-buttons {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form-button {
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 20px;
+  width: 150px;
 }
 
 @media (min-width: 720px) {
