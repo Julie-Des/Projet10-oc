@@ -1,22 +1,28 @@
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/auth/authSlice";
+import { getUserProfile, clearUserInfo } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SignIn() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const { token, loading, error } = useSelector((state) => state.auth);
+	const { token, status, error } = useSelector((state) => state.auth);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const result = await dispatch(login({ email: username, password }));
-		if (login.fulfilled.match(result)) {
+		await dispatch(login({ email: username, password }));
+	};
+
+	useEffect(() => {
+		if (token) {
+			dispatch(clearUserInfo());
+			dispatch(getUserProfile(token));
 			navigate("/user");
 		}
-	};
+	}, [token, dispatch, navigate]);
 
 	return (
 		<section className="sign-in-content">
@@ -35,8 +41,8 @@ function SignIn() {
 					<input type="checkbox" id="remember-me" />
 					<label htmlFor="remember-me">Remember me</label>
 				</div>
-				<button type="submit" className="sign-in-button" disabled={loading}>
-					{loading ? "Loading..." : "Sign In"}
+				<button type="submit" className="sign-in-button" disabled={status === "loading"}>
+					{status === "loading" ? "Loading..." : "Sign In"}
 				</button>
 				{error && <p style={{ color: "red" }}>{error}</p>}
 			</form>
