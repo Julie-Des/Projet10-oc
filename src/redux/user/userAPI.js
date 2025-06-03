@@ -1,4 +1,4 @@
-// Récupération du profil utilisateur
+//Get user profile
 export async function fetchUserProfile(token) {
   const response = await fetch('http://localhost:3001/api/v1/user/profile', {
     method: 'GET',
@@ -16,7 +16,7 @@ export async function fetchUserProfile(token) {
   return data.body;
 }
 
-// Mise à jour du nom d'utilisateur
+// Update user profile
 export async function updateUserNameAPI(token, newUsername) {
   const response = await fetch('http://localhost:3001/api/v1/user/profile', {
     method: 'PUT',

@@ -9,20 +9,19 @@ function SignIn() {
 	const navigate = useNavigate();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const { token, status, error } = useSelector((state) => state.auth);
+	const { status, error } = useSelector((state) => state.auth);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await dispatch(login({ email: username, password }));
+		dispatch(clearUserInfo());
+		const result = await dispatch(login({ email: username, password }));
+
+		if(login.fulfilled.match(result)) {
+			await dispatch(getUserProfile(result.payload.token));
+			navigate("/user")
+		};
 	};
 
-	useEffect(() => {
-		if (token) {
-			dispatch(clearUserInfo());
-			dispatch(getUserProfile(token));
-			navigate("/user");
-		}
-	}, [token, dispatch, navigate]);
 
 	return (
 		<section className="sign-in-content">

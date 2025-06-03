@@ -354,6 +354,38 @@ body {
   width: 100px;
 }
 
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.not-found h2 {
+  font-size: 10rem;
+  margin-bottom: 20px;
+  /* background-color: #00bc77;
+  border-color: #00bc77; */
+  color: #00bc77;;
+  padding: 30px 40px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.not-found p {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.not-found a {
+  color: #fff;
+}
+
+.not-found a:hover {
+  color: #00bc77;
+}
+
 @media (min-width: 720px) {
   .account {
     flex-direction: row;

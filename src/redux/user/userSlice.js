@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchUserProfile } from './userAPI';
 import { updateUserNameAPI } from './userAPI';
+import { logout } from '../auth/authSlice';
 
 // THUNK : pour aller chercher les infos utilisateur
 export const getUserProfile = createAsyncThunk(
@@ -44,6 +45,7 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+    // Get user profile
       .addCase(getUserProfile.pending, (state) => {
         state.status = 'loading';
         state.error = null;
@@ -57,7 +59,7 @@ const userSlice = createSlice({
         state.error = action.payload;
       })
 
-      // --- UPDATE USERNAME ---
+      // Update username
       .addCase(updateUserName.pending, (state) => {
         state.status = 'loading';
         state.error = null;
@@ -69,6 +71,13 @@ const userSlice = createSlice({
       .addCase(updateUserName.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
+      })
+      
+      // Logout
+      .addCase(logout, (state) => {
+        state.userInfo = null;
+        state.status = 'idle';
+        state.error = null;
       });
   },
 });
