@@ -1,6 +1,8 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 //Get user profile
 export async function fetchUserProfile(token) {
-  const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+  const response = await fetch(`${API_URL}/user/profile`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -18,7 +20,7 @@ export async function fetchUserProfile(token) {
 
 // Update user profile
 export async function updateUserNameAPI(token, newUsername) {
-  const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+  const response = await fetch(`${API_URL}/user/profile`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
