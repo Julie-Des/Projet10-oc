@@ -2,19 +2,11 @@ import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ArgentBankLogo from "../assets/argentBankLogo.webp";
 import { logout } from "../redux/auth/authSlice";
-import { clearUserInfo } from "../redux/user/userSlice";
 
 function Layout() {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	const { token } = useSelector((state) => state.auth);
 	const { userInfo } = useSelector((state) => state.user);
-
-	const handleSignOut = () => {
-		dispatch(logout());
-		dispatch(clearUserInfo());
-		navigate("/"); // redirige vers la page d'accueil
-	};
 
 	return (
 		<>

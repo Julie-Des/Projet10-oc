@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/auth/authSlice";
 import { getUserProfile, clearUserInfo } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function SignIn() {
 	const dispatch = useDispatch();
@@ -16,12 +16,11 @@ function SignIn() {
 		dispatch(clearUserInfo());
 		const result = await dispatch(login({ email: username, password }));
 
-		if(login.fulfilled.match(result)) {
+		if (login.fulfilled.match(result)) {
 			await dispatch(getUserProfile(result.payload.token));
-			navigate("/user")
-		};
+			navigate("/user");
+		}
 	};
-
 
 	return (
 		<section className="sign-in-content">

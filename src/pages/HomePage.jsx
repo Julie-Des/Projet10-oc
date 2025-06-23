@@ -7,7 +7,7 @@ function HomePage() {
 			<Hero />
 			<Features />
 		</div>
-	)
+	);
 }
 
 export default HomePage;

@@ -8,18 +8,18 @@ import accountsData from "../Data/accountsData.json";
 
 function User() {
 	const dispatch = useDispatch();
-  const navigate = useNavigate();
-  
+	const navigate = useNavigate();
+
 	const { token } = useSelector((state) => state.auth);
 	const { userInfo } = useSelector((state) => state.user);
 
 	const [isEditing, setIsEditing] = useState(false);
 
 	useEffect(() => {
-    if(!token) {
-      navigate("/sign-in");
-      return;
-    }
+		if (!token) {
+			navigate("/sign-in");
+			return;
+		}
 
 		if (!userInfo) {
 			dispatch(getUserProfile(token));
