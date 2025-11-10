@@ -79,19 +79,25 @@ Before you begin, make sure you have installed:
    git clone https://github.com/Julie-Des/Projet10-oc
    ```
 
-2. Install dependencies:
+2.  Navigate to the project directory:
+
+    ```bash
+    cd ArgentBank
+    ```
+
+3. Install dependencies:
    
    ```bash
    npm install
    ```
 
-3. Create a .env file at the root of the project and set the API URL:
+4. Create a .env file at the root of the project and set the API URL:
    
    ```bash
    VITE_API_URL=http://localhost:3001/api/v1
    ```
 
-4. Start the development server:
+5. Start the development server:
    
    ```bash
    npm run dev
